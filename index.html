@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="description"
     content="Query-Based Adaptive Aggregation for Multi-Dataset Joint Training Toward Universal Visual Place Recognition">
-  <meta name="keywords" content="Visual Place Recongnition, Multi-Dataset Training">
+  <meta name="keywords" content="Visual Place Recognition, Multi-Dataset Training, VPR, QAA">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Query-Based Adaptive Aggregation for Multi-Dataset Joint Training Toward Universal Visual Place Recognition
   </title>
@@ -39,7 +39,123 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <style>
+    /* Custom styles for QAA project page */
+    .highlight-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.5rem;
+      height: 100%;
+      border-left: 4px solid #3273dc;
+      transition: box-shadow 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    }
+
+    .highlight-box:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .highlight-box .icon-header {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .results-table th {
+      background-color: #3273dc;
+      color: white;
+      padding: 0.6rem 0.5rem;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .results-table td {
+      padding: 0.5rem;
+      text-align: center;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .results-table tbody tr:hover {
+      background-color: #f0f4ff;
+    }
+
+    .results-table .best {
+      font-weight: 700;
+      color: #3273dc;
+    }
+
+    .results-table .ours-row {
+      background-color: #eef3ff;
+      font-weight: 600;
+    }
+
+    .results-table .ours-row-variant {
+      background-color: #f5f8ff;
+      color: #555;
+    }
+
+    .results-table .ours-row-variant td {
+      font-style: italic;
+      color: #555;
+    }
+
+    .results-table .ours-row-variant:hover {
+      background-color: #edf2ff;
+    }
+
+    .results-table .method-col {
+      text-align: left;
+      font-weight: 500;
+    }
+
+    .hf-icon {
+      width: 1em;
+      height: 1em;
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    .section-divider {
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #dbdbdb, transparent);
+      margin: 0;
+    }
+
+    .method-figure {
+      max-width: 100%;
+      border-radius: 6px;
+    }
+
+    .figure-caption {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 0.75rem;
+      line-height: 1.5;
+    }
+
+    #BibTeX pre {
+      background-color: #f5f5f5;
+      border-radius: 6px;
+      padding: 1.25rem;
+      font-size: 0.85rem;
+      overflow-x: auto;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.is-active {
+      display: block;
+    }
+  </style>
 
 </head>
 
@@ -77,6 +193,7 @@
   </nav>
 
 
+  <!-- ===== Hero / Title ===== -->
   <section class="hero">
     <div class="hero-body">
       <div class="container is-max-desktop">
@@ -84,51 +201,45 @@
           <div class="column has-text-centered">
             <h1 class="title is-2 publication-title">Query-Based Adaptive Aggregation for Multi-Dataset Joint Training
               Toward Universal Visual Place Recognition</h1>
-            <h2 class="subtitle is-4 publication-venue"> IEEE International Conference on Robotics & Automation (ICRA)
-              2026 </h2>
+            <h2 class="subtitle is-4 publication-venue">IEEE International Conference on Robotics &amp; Automation
+              (ICRA) 2026</h2>
             <div class="is-size-6 publication-authors">
               <span class="author-block">
                 <a href="https://xjh19971.github.io">Jiuhong Xiao</a><sup>1</sup>,</span>
               <span class="author-block">
                 <a href="https://yangrobotics.com/">Yang Zhou</a><sup>1</sup>,</span>
               <span class="author-block">
-                <a href="https://engineering.nyu.edu/faculty/giuseppe-loianno">Giuseppe Loianno</a><sup>2</sup>,</span>
+                <a href="https://engineering.nyu.edu/faculty/giuseppe-loianno">Giuseppe
+                  Loianno</a><sup>2</sup></span>
             </div>
 
             <div class="is-size-6 publication-authors">
-              <span class="author-block"><sup>1</sup>New York University</a>,
-                <sup>2</sup>University of California, Berkeley</a>
+              <span class="author-block"><sup>1</sup>New York University,
+                <sup>2</sup>University of California, Berkeley</span>
             </div>
 
             <div class="column has-text-centered">
               <span class="link-block">
-                <a href="https://www.arxiv.org/abs/2507.03831" class="external-link button is-normal ">
+                <a href="https://www.arxiv.org/abs/2507.03831" class="external-link button is-normal">
                   <span class="icon">
                     <i class="ai ai-arxiv"></i>
                   </span>
                   <span>arXiv</span>
                 </a>
               </span>
-              <!-- <span class="link-block">
-                <a href="https://youtu.be/i_PAvzXKul4"
-                   class="external-link button is-normal ">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span> -->
               <span class="link-block">
                 <a href="https://huggingface.co/collections/xjh19972/query-based-adaptive-aggregation-qaa-models"
                   class="external-link button is-normal">
                   <span class="icon">
-                    <i class="fa fa-face-smiling-hands"></i>
+                    <img class="hf-icon"
+                      src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
+                      alt="HuggingFace">
                   </span>
-                  <span>HF Models</span>
+                  <span>Models</span>
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://github.com/arplaboratory/QAA" class="external-link button is-normal ">
+                <a href="https://github.com/arplaboratory/QAA" class="external-link button is-normal">
                   <span class="icon">
                     <i class="fab fa-github"></i>
                   </span>
@@ -139,15 +250,17 @@
           </div>
         </div>
       </div>
+
+      <!-- TL;DR -->
       <div class="container">
         <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths">
             <div class="notification is-info is-light" style="margin-bottom: 0;">
               <h2 class="title is-3">TL;DR</h2>
               <p class="is-size-5">
-                QAA introduces a novel feature aggregation technique using learned queries as an <strong>extensive
-                  reference codebook</strong> to enhance model capacity, enabling effective multi-dataset joint training
-                for Visual Place Recognition.
+                QAA uses learned queries as an extensive <strong>reference codebook</strong> to enhance model
+                capacity — replacing complex score-based aggregation with <strong>one simple matrix multiply</strong>
+                for universal visual place recognition with multi-dataset training.
               </p>
             </div>
           </div>
@@ -156,24 +269,11 @@
     </div>
   </section>
 
-  <!-- <section class="hero teaser">
-  <div class="hero-body">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-three-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/i_PAvzXKul4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>      </div>
-      </div>
-    </div>
-    </div>
-</section> -->
 
-
-
+  <!-- ===== Abstract ===== -->
   <section class="hero is-small is-light">
     <div class="hero-body">
-      <div class="container">
-        <!-- Abstract. -->
+      <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
           <div class="column is-full">
             <h2 class="title is-3">Abstract</h2>
@@ -198,98 +298,482 @@
           </div>
         </div>
       </div>
+    </div>
   </section>
 
-  <!-- <section class="hero is-light">
-<div class="hero-body">
-  <div class="columns is-centered has-text-centered">
-    <div class="column">
-      <h2 class="title is-3" >UASTHN Detected Failure Cases</h2>
-      <p></p>
-    </div>
-  </div>
-
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-
-      <div class="column has-text-centered">
-        <div class="content">
-          <h2 class="title is-4">Input</h2>
-          <img id="sgm_1" src="./data/sgm/image35.gif" width="400">
-          <img id="sgm_2" src="./data/sgm/image42.gif" width="400">
-          <img id="sgm_3" src="./data/sgm/image36.gif" width="400">
-          <img id="sgm_4" src="./data/sgm/image39.gif" width="400">
+  <!-- ===== Key Contributions ===== -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full">
+          <h2 class="title is-3">Key Contributions</h2>
         </div>
       </div>
-
-      <div class="column has-text-centered">
-        <div class="content">
-          <h2 class="title is-4">Baseline</h2>
-          <img id="sgm_5" src="./data/sgm/image31.gif" width="400">
-          <img id="sgm_6" src="./data/sgm/image32.gif" width="400">
-          <img id="sgm_7" src="./data/sgm/image33.gif" width="400">
-          <img id="sgm_8" src="./data/sgm/image34.gif" width="400">
+      <div class="columns is-centered">
+        <div class="column is-one-third">
+          <div class="highlight-box">
+            <div class="icon-header has-text-centered">📚</div>
+            <h3 class="title is-5 has-text-centered">Independent Reference Codebook</h3>
+            <p>Learned queries form an image-independent reference codebook via self-attention — a universal anchor
+              that drives generalizable performance across diverse datasets in multi-dataset joint training.</p>
+          </div>
         </div>
-      </div>
-
-      <div class="column has-text-centered">
-        <div class="content">
-          <h2 class="title is-4">Ours</h2>
-          <img id="sgm_9" src="./data/sgm/image37.gif" width="400">
-          <img id="sgm_6" src="./data/sgm/image38.gif" width="400">
-          <img id="sgm_7" src="./data/sgm/image40.gif" width="400">
-          <img id="sgm_8" src="./data/sgm/image41.gif" width="400">
+        <div class="column is-one-third">
+          <div class="highlight-box">
+            <div class="icon-header has-text-centered">⚡</div>
+            <h3 class="title is-5 has-text-centered">Cross-query Similarity</h3>
+            <p>CS replaces all complex score-based aggregation (softmax, optimal transport) with one matrix multiply.
+              Coding rate analysis confirms CS retains ~2× the information of conventional approaches.</p>
+          </div>
+        </div>
+        <div class="column is-one-third">
+          <div class="highlight-box">
+            <div class="icon-header has-text-centered">🛡️</div>
+            <h3 class="title is-5 has-text-centered">Robust Under Bottlenecks</h3>
+            <p>Even with severely compressed image features (just 8 channels), the high-dimensional reference
+              codebook compensates — actively carrying representational structure for robust performance.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-</section>
+  </section>
 
-
-<section class="section">
-  <div class="columns is-centered has-text-centered">
-    <div class="column">
-      <h2 class="title is-3">TGM Generated Thermal Images</h2>
-      <p></p>
-    </div>
-  </div> -->
-
-
-
-  <!-- <section class="section">
-  <div class="columns is-centered has-text-centered">
-    <div class="column">
-      <h2 class="title is-3">Poster Presentation</h2>
-    </div>
-  </div>
-<div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column has-text-centered">
-        <div class="content">
-          <iframe src="data/poster_VG_SSL.pdf" width="100%" height="600px" style="border:none;">
-        </iframe>
+  <!-- ===== Method Overview ===== -->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full">
+          <h2 class="title is-3">Method Overview</h2>
+        </div>
+      </div>
+      <div class="columns is-centered is-vcentered">
+        <div class="column is-5 has-text-centered">
+          <img src="./data/framework.png" alt="QAA Framework Overview" class="method-figure">
+        </div>
+        <div class="column is-5">
+          <p class="figure-caption has-text-justified">
+            <strong>Top:</strong> The training framework for multi-dataset joint training. Images from multiple
+            datasets are processed by a shared DINOv2 backbone, and the resulting features are aggregated by QAA
+            into compact descriptors trained with Multi-Similarity Loss.
+            <br><br>
+            <strong>Bottom:</strong> The QAA architecture. Feature queries attend to backbone features via
+            cross-attention to produce query-level image features (P̂). Reference queries pass through
+            self-attention to form an independent codebook (F̂). The final descriptor is the Cross-query
+            Similarity matrix S = F̂ᵀP̂, followed by normalization.
+          </p>
         </div>
       </div>
     </div>
-  </div>
-</section> -->
+    </div>
+  </section>
 
-  <!-- <section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title is-3">BibTeX</h2>
-    <pre><code>
-    @inproceedings{xiao2025vg,
-      title={VG-SSL: Benchmarking Self-Supervised Representation Learning Approaches for Visual Geo-Localization},
-      author={Xiao, Jiuhong and Zhu, Gao and Loianno, Giuseppe},
-      booktitle={2025 IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
-      pages={6667--6677},
-      year={2025},
-      organization={IEEE}
-    }
-    </code></pre>
-  </div>
-</section> -->
+  <!-- ===== Results ===== -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full">
+          <h2 class="title is-3">Results</h2>
+          <p class="subtitle is-6" style="margin-top: -0.5rem; color: #666;">
+            Recall@1 comparison with state-of-the-art VPR methods. All QAA results use DINOv2-B backbone.
+            Reduced C<sub>d</sub> variants (4096, 2048, 1024) demonstrate robust performance with smaller descriptors.
+          </p>
+        </div>
+      </div>
+
+      <!-- Tabs for Multi-view / Front-view -->
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <div class="tabs is-centered is-boxed" id="results-tabs">
+            <ul>
+              <li class="is-active" data-target="tab-multiview"><a>Multi-view Datasets</a></li>
+              <li data-target="tab-frontview"><a>Front-view Datasets</a></li>
+            </ul>
+          </div>
+
+          <!-- Multi-view Table -->
+          <div id="tab-multiview" class="tab-content is-active">
+            <div class="table-container">
+              <table class="results-table">
+                <thead>
+                  <tr>
+                    <th>Method</th>
+                    <th>Backbone</th>
+                    <th>C<sub>d</sub></th>
+                    <th>AmsterTime</th>
+                    <th>Eynsham</th>
+                    <th>Pitts250k</th>
+                    <th>Pitts30k</th>
+                    <th>SPED</th>
+                    <th>SF-XL v1</th>
+                    <th>SF-XL v2</th>
+                    <th>Tokyo24/7</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="method-col">NetVLAD</td>
+                    <td>VGG-16</td>
+                    <td>4096</td>
+                    <td>16.3</td>
+                    <td>77.7</td>
+                    <td>85.9</td>
+                    <td>85.0</td>
+                    <td>-</td>
+                    <td>40.0</td>
+                    <td>76.9</td>
+                    <td>69.8</td>
+                  </tr>
+                  <tr>
+                    <td class="method-col">MixVPR</td>
+                    <td>ResNet-50</td>
+                    <td>4096</td>
+                    <td>40.2</td>
+                    <td>89.4</td>
+                    <td>94.2</td>
+                    <td>91.5</td>
+                    <td>85.2</td>
+                    <td>71.1</td>
+                    <td>88.5</td>
+                    <td>85.1</td>
+                  </tr>
+                  <tr>
+                    <td class="method-col">EigenPlace</td>
+                    <td>ResNet-50</td>
+                    <td>2048</td>
+                    <td>48.9</td>
+                    <td>90.7</td>
+                    <td>94.1</td>
+                    <td>92.5</td>
+                    <td>82.4</td>
+                    <td>84.1</td>
+                    <td>90.8</td>
+                    <td>93.0</td>
+                  </tr>
+                  <tr>
+                    <td class="method-col">BoQ</td>
+                    <td>DINOv2-B</td>
+                    <td>12288</td>
+                    <td>63.0</td>
+                    <td>92.2</td>
+                    <td>96.6</td>
+                    <td>93.7</td>
+                    <td class="best">92.5</td>
+                    <td>91.8</td>
+                    <td class="best">95.2</td>
+                    <td>98.1</td>
+                  </tr>
+                  <tr>
+                    <td class="method-col">SALAD CM</td>
+                    <td>DINOv2-B</td>
+                    <td>8448</td>
+                    <td>58.1</td>
+                    <td>91.9</td>
+                    <td>95.2</td>
+                    <td>92.6</td>
+                    <td>89.1</td>
+                    <td>85.6</td>
+                    <td>94.6</td>
+                    <td>96.8</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">QAA (Ours)</td>
+                    <td>DINOv2-B</td>
+                    <td>8192</td>
+                    <td class="best">63.7</td>
+                    <td class="best">92.9</td>
+                    <td class="best">96.6</td>
+                    <td class="best">94.4</td>
+                    <td>91.8</td>
+                    <td class="best">94.4</td>
+                    <td>94.6</td>
+                    <td class="best">98.4</td>
+                  </tr>
+                  <tr class="ours-row-variant">
+                    <td class="method-col">QAA (Ours)</td>
+                    <td>DINOv2-B</td>
+                    <td>4096</td>
+                    <td>61.8</td>
+                    <td>92.9</td>
+                    <td>96.3</td>
+                    <td>93.8</td>
+                    <td>91.1</td>
+                    <td>94.2</td>
+                    <td>94.0</td>
+                    <td>97.8</td>
+                  </tr>
+                  <tr class="ours-row-variant">
+                    <td class="method-col">QAA (Ours)</td>
+                    <td>DINOv2-B</td>
+                    <td>2048</td>
+                    <td>61.5</td>
+                    <td>92.7</td>
+                    <td>96.4</td>
+                    <td>94.0</td>
+                    <td>91.1</td>
+                    <td>94.0</td>
+                    <td>94.1</td>
+                    <td>96.5</td>
+                  </tr>
+                  <tr class="ours-row-variant">
+                    <td class="method-col">QAA (Ours)</td>
+                    <td>DINOv2-B</td>
+                    <td>1024</td>
+                    <td>59.8</td>
+                    <td>92.5</td>
+                    <td>96.3</td>
+                    <td>93.9</td>
+                    <td>90.8</td>
+                    <td>92.4</td>
+                    <td>94.5</td>
+                    <td>97.1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Front-view Table -->
+          <div id="tab-frontview" class="tab-content">
+            <div class="table-container">
+              <table class="results-table">
+                <thead>
+                  <tr>
+                    <th>Method</th>
+                    <th>Backbone</th>
+                    <th>C<sub>d</sub></th>
+                    <th>MSLS Val</th>
+                    <th>MSLS Chall.</th>
+                    <th>Nordland*</th>
+                    <th>Nordland**</th>
+                    <th>SVOX Night</th>
+                    <th>SVOX Over.</th>
+                    <th>SVOX Rain</th>
+                    <th>SVOX Snow</th>
+                    <th>SVOX Sun</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="method-col">NetVLAD</td>
+                    <td>VGG-16</td>
+                    <td>4096</td>
+                    <td>58.9</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>13.1</td>
+                    <td>8.0</td>
+                    <td>66.4</td>
+                    <td>51.5</td>
+                    <td>54.4</td>
+                    <td>35.4</td>
+                  </tr>
+                  <tr>
+                    <td class="method-col">MixVPR</td>
+                    <td>ResNet-50</td>
+                    <td>4096</td>
+                    <td>88.0</td>
+                    <td>64.0</td>
+                    <td>58.4</td>
+                    <td>76.2</td>
+                    <td>64.4</td>
+                    <td>96.2</td>
+                    <td>91.5</td>
+                    <td>96.8</td>
+                    <td>84.8</td>
+                  </tr>
+                  <tr>
+                    <td class="method-col">EigenPlace</td>
+                    <td>ResNet-50</td>
+                    <td>2048</td>
+                    <td>89.2</td>
+                    <td>67.4</td>
+                    <td>54.2</td>
+                    <td>71.2</td>
+                    <td>58.9</td>
+                    <td>93.1</td>
+                    <td>90.0</td>
+                    <td>93.1</td>
+                    <td>86.4</td>
+                  </tr>
+                  <tr>
+                    <td class="method-col">BoQ</td>
+                    <td>DINOv2-B</td>
+                    <td>12288</td>
+                    <td>93.8</td>
+                    <td>79.0</td>
+                    <td>81.3</td>
+                    <td>90.6</td>
+                    <td class="best">97.7</td>
+                    <td>98.5</td>
+                    <td class="best">98.8</td>
+                    <td class="best">99.4</td>
+                    <td>97.5</td>
+                  </tr>
+                  <tr>
+                    <td class="method-col">SALAD CM</td>
+                    <td>DINOv2-B</td>
+                    <td>8448</td>
+                    <td>94.2</td>
+                    <td>82.7</td>
+                    <td>90.7</td>
+                    <td>95.2</td>
+                    <td>95.6</td>
+                    <td>98.5</td>
+                    <td>98.4</td>
+                    <td>99.2</td>
+                    <td class="best">98.1</td>
+                  </tr>
+                  <tr class="ours-row">
+                    <td class="method-col">QAA (Ours)</td>
+                    <td>DINOv2-B</td>
+                    <td>8192</td>
+                    <td class="best">97.6</td>
+                    <td class="best">85.7</td>
+                    <td class="best">91.8</td>
+                    <td class="best">96.7</td>
+                    <td>97.2</td>
+                    <td>98.4</td>
+                    <td>98.4</td>
+                    <td>99.1</td>
+                    <td>97.3</td>
+                  </tr>
+                  <tr class="ours-row-variant">
+                    <td class="method-col">QAA (Ours)</td>
+                    <td>DINOv2-B</td>
+                    <td>4096</td>
+                    <td>98.1</td>
+                    <td>84.8</td>
+                    <td>91.6</td>
+                    <td>96.6</td>
+                    <td>97.2</td>
+                    <td>98.5</td>
+                    <td>97.9</td>
+                    <td>99.0</td>
+                    <td>98.2</td>
+                  </tr>
+                  <tr class="ours-row-variant">
+                    <td class="method-col">QAA (Ours)</td>
+                    <td>DINOv2-B</td>
+                    <td>2048</td>
+                    <td>97.8</td>
+                    <td>84.2</td>
+                    <td>91.4</td>
+                    <td>95.6</td>
+                    <td>96.4</td>
+                    <td>98.4</td>
+                    <td>97.5</td>
+                    <td>98.3</td>
+                    <td>97.1</td>
+                  </tr>
+                  <tr class="ours-row-variant">
+                    <td class="method-col">QAA (Ours)</td>
+                    <td>DINOv2-B</td>
+                    <td>1024</td>
+                    <td>97.7</td>
+                    <td>82.1</td>
+                    <td>88.3</td>
+                    <td>92.2</td>
+                    <td>95.0</td>
+                    <td>98.6</td>
+                    <td>97.7</td>
+                    <td>99.0</td>
+                    <td>95.9</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <p class="has-text-centered" style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+            <span class="best">Blue bold</span> = best result.
+            <span style="background-color: #eef3ff; padding: 0.1rem 0.4rem; border-radius: 3px; font-weight: 600;">Highlighted row</span>
+            = our method.
+            <span style="background-color: #f5f8ff; padding: 0.1rem 0.4rem; border-radius: 3px; font-style: italic;">Italic rows</span>
+            = reduced C<sub>d</sub> variants. QAA maintains robust performance even at 4–8× smaller descriptor dimensions.
+          </p>
+        </div>
+      </div>
+
+      <!-- Efficiency Comparison -->
+      <div class="columns is-centered" style="margin-top: 2rem;">
+        <div class="column is-8">
+          <h3 class="title is-4 has-text-centered">Inference Efficiency</h3>
+          <div class="columns has-text-centered">
+            <div class="column">
+              <div class="notification is-light">
+                <p class="heading">SALAD</p>
+                <p class="title is-5">1.4M params</p>
+                <p class="subtitle is-6">0.94 GFLOPS</p>
+              </div>
+            </div>
+            <div class="column">
+              <div class="notification is-light">
+                <p class="heading">BoQ (64 queries)</p>
+                <p class="title is-5">8.6M params</p>
+                <p class="subtitle is-6">8.22 GFLOPS</p>
+              </div>
+            </div>
+            <div class="column">
+              <div class="notification is-info is-light">
+                <p class="heading"><strong>QAA (256 queries)</strong></p>
+                <p class="title is-5">5.1M params</p>
+                <p class="subtitle is-6">2.29 GFLOPS</p>
+              </div>
+            </div>
+          </div>
+          <p class="has-text-centered" style="color: #666; font-size: 0.9rem;">
+            Despite using 4× more queries than BoQ, QAA requires 3.6× fewer GFLOPS and 40% fewer parameters.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Qualitative Results ===== -->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full">
+          <h2 class="title is-3">Qualitative Results</h2>
+          <p class="subtitle is-6" style="margin-top: -0.5rem; color: #666;">
+            Attention maps for different query vectors across front-view and multi-view datasets.
+          </p>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-15 has-text-centered">
+          <!-- Replace with your actual figure path -->
+          <img src="./data/attention_maps.png" alt="Attention Maps for Different Query Vectors"
+            class="method-figure">
+          <p class="figure-caption has-text-justified">
+            Attention maps corresponding to different query vectors (Q<sup>f</sup><sub>i</sub>,
+            Q<sup>f</sup><sub>j</sub>, Q<sup>f</sup><sub>k</sub>) from the Feature Prediction model for
+            MSLS Val (front-view) and Pitts250k / Tokyo24/7 (multi-view). Each pair shows the same location
+            from different viewpoints. The learned queries exhibit <strong>diverse attention patterns</strong>
+            — some focus on distant structures, others on nearby roads — while maintaining
+            <strong>consistency across viewpoints</strong> for the same landmarks.
+          </p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- ===== BibTeX ===== -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3 has-text-centered">BibTeX</h2>
+      <pre><code>@article{xiao2025query,
+  title={Query-Based Adaptive Aggregation for Multi-Dataset Joint Training Toward Universal Visual Place Recognition},
+  author={Xiao, Jiuhong and Zhou, Yang and Loianno, Giuseppe},
+  journal={arXiv preprint arXiv:2507.03831},
+  year={2025}
+}</code></pre>
+    </div>
+  </section>
+
 
   <footer class="footer">
     <div class="container">
@@ -317,6 +801,23 @@
       </div>
     </div>
   </footer>
+
+  <!-- Tab switching script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabs = document.querySelectorAll('#results-tabs li');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Remove active from all tabs and contents
+          tabs.forEach(t => t.classList.remove('is-active'));
+          document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('is-active'));
+          // Activate clicked tab and its content
+          tab.classList.add('is-active');
+          document.getElementById(tab.dataset.target).classList.add('is-active');
+        });
+      });
+    });
+  </script>
 
 </body>
 
